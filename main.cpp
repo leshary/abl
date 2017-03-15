@@ -14,21 +14,11 @@ struct Tree
         this-> r = NULL;
         this-> hight = 1;
     };
-    void dell (Tree* a)
-    {
-        if (a->l)
-            dell ( a->l );
-        if (a->r)
-            dell (a->r);
-        delete a;
-    }
-    ~Tree (){
-    dell ( this->l );
-    dell ( this->r );
-    }
 };
 class bstree
 {
+private:
+    Tree* root;
 public:
     unsigned char height(Tree* x) // возращает высоту, может работать с пустыми указателями
     {
@@ -95,6 +85,17 @@ public:
             return rotateright(p);
         }
         return p; // балансировка не нужна
+    }
+    void dell (Tree* a)
+    {
+        if (a->l)
+            dell ( a->l );
+        if (a->r)
+            dell (a->r);
+        delete a;
+    }
+    ~bstree (){
+    dell ( root );
     }
 };
 int main()
