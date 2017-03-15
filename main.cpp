@@ -14,18 +14,17 @@ struct Tree
         this-> r = NULL;
         this-> hight = 1;
     };
-    Tree& dell (Tree& a)
+    void dell (Tree* a)
     {
-        if (a.l)
-            dell ( *(a.l) );
-        if (a.r)
-            dell ( *(a.r) );
-        delete l, r, x, hight;
+        if (a->l)
+            dell ( a->l );
+        if (a->r)
+            dell (a->r);
+        delete a;
     }
     ~Tree (){
-    dell ( *l );
-    dell ( *r );
-    delete l, r, x, hight;
+    dell ( this->l );
+    dell ( this->r );
     }
 };
 class bstree
